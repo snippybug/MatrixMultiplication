@@ -1,9 +1,7 @@
-package localhost.matrimultiplication;
+package localhost;
 
 import java.io.IOException;
 import java.util.Arrays;
-
-import junit.framework.Assert;
 
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
@@ -11,6 +9,8 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mrunit.mapreduce.MapDriver;
 import org.apache.hadoop.mrunit.mapreduce.ReduceDriver;
 import org.junit.*;
+
+import tools.*;
 
 public class MatrixMapperTest {
 	@Test
@@ -66,7 +66,6 @@ public class MatrixMapperTest {
 		throws IOException, InterruptedException{
 		ReduceDriver<IntTriple, IntPair, IntPair, IntWritable> driver = new ReduceDriver<IntTriple, IntPair, IntPair, IntWritable>();
 		driver.withReducer(new MatrixReducer());
-		
 		
 		//ReduceFeeder<IntPair, Text> feeder = new ReduceFeeder<IntPair, Text>(); 
 		//List<KeyValueReuseList<IntPair, Text>> list = feeder.sortAndGroup(Arrays.asList(new Pair<IntPair, Text>(new IntPair(1, 1), new Text("a\t1\t3"))
